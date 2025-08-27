@@ -8,9 +8,15 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Allow frontend
-app.use(cors({ origin: "http://localhost:3000","https://portfolioaayushh.netlify.app",
-              credentials: true }));
+// ✅ Allow multiple frontend origins
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://portfolioaayushh.netlify.app"
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // PostgreSQL setup
